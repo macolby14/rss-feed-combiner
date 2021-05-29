@@ -1,0 +1,27 @@
+{
+  "name": "my-rss-feed",
+  "version": "1.0.0",
+  "description": "Combine rss feeds for easy reading",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "dev": "tsc --watch & nodemon dist/index.js",
+    "start": "npm run build & node dist/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@tsconfig/node16": "^1.0.1",
+    "@types/express": "^4.17.12",
+    "@typescript-eslint/eslint-plugin": "^4.25.0",
+    "@typescript-eslint/parser": "^4.25.0",
+    "eslint": "^7.27.0",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.3.0",
+    "typescript": "^4.3.2"
+  }
+}

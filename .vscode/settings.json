@@ -1,0 +1,7 @@
+{
+    "workbench.colorCustomizations": {
+      "editorError.background": "#f564642b",
+      "editorWarning.background": "#ffd8764a",
+      "editorInfo.background": "#2fd5ff24",
+    }
+  }
