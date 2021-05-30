@@ -1,5 +1,5 @@
 import Parser from "rss-parser";
-import fs from "fs";
+import fs from "fs/promises";
 import path from "path";
 
 interface CustomFeed {
@@ -14,17 +14,14 @@ interface CustomItem {
 
 console.log("New run...\n");
 
-fs.readFile("./feeds.txt", "utf8", (err, data) => {
-  return new Promise((resolve, reject) => {
-    if (err) {
-      console.error("Error reading file occured: " + err);
-      reject(err);
-    }
-    const rssUrls = data.split("\n");
-    console.log(rssUrls);
-    resolve(rssUrls);
-  });
-});
+(async () => {
+  const data = await fs
+    .readFile("./feeds.txt", "utf8")
+    .catch((err) => `An error occured reading rss feed urls: ${err}`);
+
+  const rssUrls = data.split("\n");
+  console.log(rssUrls);
+})();
 
 // const parser = new Parser<CustomFeed, CustomItem>();
 

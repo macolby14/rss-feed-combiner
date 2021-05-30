@@ -3,19 +3,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs_1 = __importDefault(require("fs"));
+const promises_1 = __importDefault(require("fs/promises"));
 console.log("New run...\n");
-fs_1.default.readFile("./feeds.txt", "utf8", (err, data) => {
-    return new Promise((resolve, reject) => {
-        if (err) {
-            console.error("Error reading file occured: " + err);
-            reject(err);
-        }
-        const rssUrls = data.split("\n");
-        console.log(rssUrls);
-        resolve(rssUrls);
-    });
-});
+(async () => {
+    const data = await promises_1.default
+        .readFile("./feeds.txt", "utf8")
+        .catch((err) => `An error occured reading rss feed urls: ${err}`);
+    const rssUrls = data.split("\n");
+    console.log(rssUrls);
+})();
 // const parser = new Parser<CustomFeed, CustomItem>();
 // const rssUrls = [
 //   "https://www.joshwcomeau.com/rss.xml",
