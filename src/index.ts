@@ -1,22 +1,48 @@
-import fetch from "node-fetch";
-import { JSDOM } from "jsdom";
+import Parser from "rss-parser";
+import fs from "fs";
+import path from "path";
 
-const RSS_URL = `https://www.joshwcomeau.com/rss.xml/`;
+interface CustomFeed {
+  title: string;
+}
 
-fetch(RSS_URL)
-  .then((response) => response.text())
-  .then((xml) => {
-    // Create empty DOM, the imput param here is for HTML not XML, and we don want to parse HTML
-    const dom = new JSDOM("");
-    // Get DOMParser, same API as in browser
-    const DOMParser = dom.window.DOMParser;
-    const parser = new DOMParser();
-    // Create document by parsing XML
-    const document = parser.parseFromString(xml, "text/xml");
+interface CustomItem {
+  title: string;
+  link: string;
+  pubDate: string;
+}
 
-    // save the xml after modifications
-    const xmlString = document.querySelector("lastBuildDate").textContent;
-    return xmlString;
-  })
-  .then((data) => console.log(data))
-  .catch((error) => console.error("error: " + error));
+console.log("New run...\n");
+
+fs.readFile("./feeds.txt", "utf8", (err, data) => {
+  return new Promise((resolve, reject) => {
+    if (err) {
+      console.error("Error reading file occured: " + err);
+      reject(err);
+    }
+    const rssUrls = data.split("\n");
+    console.log(rssUrls);
+    resolve(rssUrls);
+  });
+});
+
+// const parser = new Parser<CustomFeed, CustomItem>();
+
+// const rssUrls = [
+//   "https://www.joshwcomeau.com/rss.xml",
+//   "https://netflixtechblog.com/feed",
+// ];
+
+// (async () => {
+//   for (const url of rssUrls) {
+//     const feed = await parser.parseURL(url);
+//     console.log(feed.title);
+
+//     feed.items.slice(0, 3).forEach((item) => {
+//       const dateString = new Date(item.pubDate).toLocaleDateString("en-US");
+//       console.log(`\n${item.title} (${dateString})\n${item.link}`);
+//     });
+
+//     console.log("-".repeat(10) + "\n");
+//   }
+// })();
