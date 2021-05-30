@@ -1,6 +1,5 @@
 import Parser from "rss-parser";
 import fs from "fs/promises";
-import path from "path";
 
 interface CustomFeed {
   title: string;
