@@ -11,9 +11,9 @@ interface CustomItem {
   pubDate: string;
 }
 
-console.log("New run...\n");
+(async function main() {
+  console.log("New run...\n");
 
-(async () => {
   const data = await fs
     .readFile("./feeds.txt", "utf8")
     .catch((err) => `An error occured reading rss feed urls: ${err}`);
