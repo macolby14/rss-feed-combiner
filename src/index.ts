@@ -35,7 +35,7 @@ interface CustomItem {
       mostRecentPubDate: feedMostRecentPubDate,
     };
 
-    fs.writeFile("outputFeed.json", JSON.stringify(relevantFeed));
+    fs.writeFile("./out/outputFeed.json", JSON.stringify(relevantFeed));
   }
 })();
 
