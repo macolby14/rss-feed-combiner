@@ -11,6 +11,12 @@ interface CustomItem {
   pubDate: string;
 }
 
+interface ProcessedFeed {
+  title: string;
+  items: CustomItem[];
+  mostRecentPubDate: Date;
+}
+
 (async function main() {
   console.log("New run...\n");
 
@@ -21,6 +27,8 @@ interface CustomItem {
   const rssUrls = data.split("\n");
 
   const parser = new Parser<CustomFeed, CustomItem>();
+
+  const feeds: ProcessedFeed[] = [];
 
   for (const url of rssUrls) {
     const feed = await parser.parseURL(url);
@@ -35,8 +43,10 @@ interface CustomItem {
       mostRecentPubDate: feedMostRecentPubDate,
     };
 
-    fs.writeFile("./out/outputFeed.json", JSON.stringify(relevantFeed));
+    feeds.push(relevantFeed);
   }
+
+  fs.writeFile("./out/outputFeed.json", JSON.stringify(feeds));
 })();
 
 function pickItemKeys({ title, link, pubDate }: CustomItem): CustomItem {
