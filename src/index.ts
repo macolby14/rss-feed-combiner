@@ -15,30 +15,39 @@ interface CustomItem {
   console.log("New run...\n");
 
   const data = await fs
-    .readFile("./feeds.txt", "utf8")
+    .readFile("./targetFeedURIs.txt", "utf8")
     .catch((err) => `An error occured reading rss feed urls: ${err}`);
 
   const rssUrls = data.split("\n");
-  console.log(rssUrls);
+
+  const parser = new Parser<CustomFeed, CustomItem>();
+
+  for (const url of rssUrls) {
+    const feed = await parser.parseURL(url);
+    const relevantItems = feed.items
+      .slice(0, 3)
+      .map((item) => pickItemKeys(item));
+    const feedMostRecentPubDate = getMostRecentPubDate(relevantItems);
+
+    const relevantFeed = {
+      title: feed.title,
+      items: relevantItems,
+      mostRecentPubDate: feedMostRecentPubDate,
+    };
+
+    fs.writeFile("outputFeed.json", JSON.stringify(relevantFeed));
+  }
 })();
 
-// const parser = new Parser<CustomFeed, CustomItem>();
+function pickItemKeys({ title, link, pubDate }: CustomItem): CustomItem {
+  return { title, link, pubDate };
+}
 
-// const rssUrls = [
-//   "https://www.joshwcomeau.com/rss.xml",
-//   "https://netflixtechblog.com/feed",
-// ];
+function getMostRecentPubDate(items: CustomItem[]): Date {
+  let mostRecentPubDate = 0;
 
-// (async () => {
-//   for (const url of rssUrls) {
-//     const feed = await parser.parseURL(url);
-//     console.log(feed.title);
-
-//     feed.items.slice(0, 3).forEach((item) => {
-//       const dateString = new Date(item.pubDate).toLocaleDateString("en-US");
-//       console.log(`\n${item.title} (${dateString})\n${item.link}`);
-//     });
-
-//     console.log("-".repeat(10) + "\n");
-//   }
-// })();
+  items.forEach(({ pubDate }) => {
+    mostRecentPubDate = Math.max(Date.parse(pubDate), mostRecentPubDate);
+  });
+  return new Date(mostRecentPubDate);
+}
