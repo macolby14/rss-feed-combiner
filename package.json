@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "dev": "tsc --watch & nodemon dist/index.js",
+    "dev": "tsc --watch & nodemon --watch dist/ dist/index.js",
     "start": "npm run build & node dist/index.js"
   },
   "author": "",
