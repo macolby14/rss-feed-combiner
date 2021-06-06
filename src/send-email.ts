@@ -16,12 +16,21 @@ export async function sendTestEmail(): Promise<void> {
     text: "and easy to do anywhere, even with Node.js",
     html: "<strong>and easy to do anywhere, even with Node.js</strong>",
   };
-  // await sgMail
-  //   .send(msg)
-  //   .then(() => {
-  //     console.log("Email sent");
-  //   })
-  //   .catch((error) => {
-  //     console.error(error);
-  //   });
+  if (process.env.SEND_EMAIL === "1") {
+    await sgMail
+      .send(msg)
+      .then(() => {
+        console.log("Email sent");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  } else {
+    await new Promise<void>((resolve) =>
+      setTimeout(() => {
+        console.log("Timeout simulating email compelte");
+        resolve();
+      }, 1000)
+    );
+  }
 }
