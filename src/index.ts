@@ -1,5 +1,6 @@
 import Parser from "rss-parser";
 import fs from "fs/promises";
+import { sendTestEmail } from "./send-email";
 
 interface CustomFeed {
   title: string;
@@ -52,6 +53,8 @@ interface ProcessedFeed {
   };
 
   fs.writeFile("./out/outputFeed.json", JSON.stringify(writeOutput));
+
+  sendTestEmail();
 })();
 
 function pickItemKeys({ title, link, pubDate }: CustomItem): CustomItem {
