@@ -1,5 +1,6 @@
 import Parser from "rss-parser";
 import fs from "fs/promises";
+import "./loadEnv";
 import { sendTestEmail } from "./send-email";
 
 interface CustomFeed {

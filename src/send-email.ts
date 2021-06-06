@@ -8,8 +8,7 @@ export async function sendTestEmail(): Promise<void> {
     typeof process.env.SENDGRID_API_KEY === "string",
     "SENDGRID_API_KEY is not a string"
   );
-  console.log(process.env.SENDGRID_API_KEY);
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY || "");
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   const msg = {
     to: "macolby14@gmail.com", // Change to your recipient
     from: "macolby14@gmail.com", // Change to your verified sender
