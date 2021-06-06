@@ -25,3 +25,15 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run start
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+          git add -A
+          git status
+          git commit -m "github actions commit from node-js-push.yml"
+        shell: bash
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
