@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "dev": "tsc --watch & nodemon --watch dist/ dist/index.js",
-    "start": "npm run build & node dist/index.js"
+    "start": "node dist/index.js",
+    "go": "npm run build & npm run start"
   },
   "author": "",
   "license": "ISC",
