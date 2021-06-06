@@ -27,7 +27,9 @@ export async function sendTestEmail(): Promise<void> {
   } else {
     await new Promise<void>((resolve) =>
       setTimeout(() => {
-        console.log("Timeout simulating email compelte");
+        console.log(
+          "Simulating sending email compelte. Change SEND_EMAIL env variable to actually send."
+        );
         console.log({ msg });
         resolve();
       }, 1000)
