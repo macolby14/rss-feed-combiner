@@ -12,8 +12,7 @@ export async function sendTestEmail(): Promise<void> {
   const msg = {
     to: "macolby14@gmail.com", // Change to your recipient
     from: "macolby14@gmail.com", // Change to your verified sender
-    subject: "Sending with SendGrid is Fun - Sent from rss - feed -combiner",
-    text: "and easy to do anywhere, even with Node.js",
+    subject: "My RSS Feed",
     html: "<strong>and easy to do anywhere, even with Node.js</strong>",
   };
   if (process.env.SEND_EMAIL === "1") {
@@ -29,8 +28,11 @@ export async function sendTestEmail(): Promise<void> {
     await new Promise<void>((resolve) =>
       setTimeout(() => {
         console.log("Timeout simulating email compelte");
+        console.log({ msg });
         resolve();
       }, 1000)
     );
   }
 }
+
+function genereateEmailHTML() {}
