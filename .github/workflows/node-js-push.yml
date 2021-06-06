@@ -25,3 +25,21 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run start
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+          git status
+          git add -A
+            if [-z "$(git status --porcelain)"]; then
+              echo "::set-output name=push::false"
+            else
+              git commit -m "Add changes" -a
+              echo "::set-output name=push::true"
+            fi
+        shell: bash
+      - name: Push changes
+        if: steps.commit.outputs.push == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
