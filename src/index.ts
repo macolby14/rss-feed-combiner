@@ -46,7 +46,12 @@ interface ProcessedFeed {
     feeds.push(relevantFeed);
   }
 
-  fs.writeFile("./out/outputFeed.json", JSON.stringify(feeds));
+  const writeOutput = {
+    feeds,
+    timeUpdated: new Date().toString(),
+  };
+
+  fs.writeFile("./out/outputFeed.json", JSON.stringify(writeOutput));
 })();
 
 function pickItemKeys({ title, link, pubDate }: CustomItem): CustomItem {
