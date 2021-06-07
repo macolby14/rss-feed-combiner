@@ -5,19 +5,19 @@ interface CustomFeed {
   title: string;
 }
 
-interface CustomItem {
+export interface CustomItem {
   title: string;
   link: string;
   pubDate: string;
 }
 
-interface ProcessedFeed {
+export interface ProcessedFeed {
   title: string;
   items: CustomItem[];
   mostRecentPubDate: Date;
 }
 
-interface CombinedFeeds {
+export interface CombinedFeeds {
   feeds: ProcessedFeed[];
   timeUpdated: string;
 }
