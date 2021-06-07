@@ -3,6 +3,10 @@
 
 name: Node.js Actions on Push
 
+# on:
+#   schedule:
+#     - cron: "0 0 * * *"
+
 on:
   push:
     branches: [main]
@@ -18,7 +22,7 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - run: echo "Testing env variables. SEND_EMAIL ${{ SEND_EMAIL }}"
+      - run: echo "Testing env variables. SEND_EMAIL ${{ env.SEND_EMAIL }}"
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
