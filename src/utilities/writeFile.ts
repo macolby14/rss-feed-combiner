@@ -5,7 +5,7 @@ export function writeFile(fileName: string, data: unknown): Promise<void> {
     return new Promise((resolve) => {
       setTimeout(() => {
         console.log(
-          "Did not write to files due to env flag WRITE_TO_FILES is not 1"
+          `Did not write to ${fileName}. Change WRITE_TO_FILES env variable to actually write.`
         );
         resolve();
       });
