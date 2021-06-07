@@ -16,14 +16,13 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY}}
-      SEND_EMAIL: 0
+      SEND_EMAIL: ${{secrets.SEND_EMAIL}}
     strategy:
       matrix:
         node-version: [14.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - run: echo "Testing env variables. SEND_EMAIL ${{ env.SEND_EMAIL }}"
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
