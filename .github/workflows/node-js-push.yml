@@ -32,13 +32,11 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run start
-      - name: Commit files
+      - name: Commit and Push files if flag set
+        if: ${{ secrets.WRITE_TO_FILES == '1'}}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions"
           git commit -am "github actions commit from node-js-push.yml"
+          git push
         shell: bash
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
