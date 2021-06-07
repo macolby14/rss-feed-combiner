@@ -14,7 +14,6 @@
   "license": "ISC",
   "dependencies": {
     "@sendgrid/mail": "^7.4.4",
-    "@types/assert": "^1.5.4",
     "@types/dotenv": "^8.2.0",
     "@types/jsdom": "^16.2.10",
     "@types/node-fetch": "^2.5.10",
