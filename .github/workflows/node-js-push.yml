@@ -16,7 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY}}
-      SEND_EMAIL: ${{secrets.SEND_EMAIL}}
+      SEND_EMAIL: ${{secrets.SEND_EMAIL}} # not actually a secret. A 0 or 1 flag
+      WRITE_TO_FILES: ${{ secrets.WRITE_TO_FILE }} # not acutally a secret. A 0 or 1 flag.
     strategy:
       matrix:
         node-version: [14.x]
