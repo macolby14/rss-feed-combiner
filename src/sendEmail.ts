@@ -2,8 +2,8 @@
 // https://github.com/sendgrid/sendgrid-nodejs
 import sgMail from "@sendgrid/mail";
 import { strict as assert } from "assert";
-import { promises as fs } from "fs";
 import { CombinedFeeds, CustomItem, ProcessedFeed } from "./getFeeds";
+import { writeFile } from "./utilities/writeFile";
 
 export async function sendEmail(feeds: CombinedFeeds): Promise<void> {
   assert.ok(
@@ -17,7 +17,7 @@ export async function sendEmail(feeds: CombinedFeeds): Promise<void> {
 
   const emailHTML = genereateEmailHTML(feeds);
 
-  fs.writeFile("./out/emailPreview.html", emailHTML);
+  writeFile("./out/emailPreview.html", emailHTML);
 
   const msg = {
     to: "macolby14@gmail.com", // Change to your recipient
