@@ -33,7 +33,7 @@ jobs:
       - run: npm run build
       - run: npm run start
       - name: Commit and Push files if flag set
-        if: ${{ secrets.WRITE_TO_FILES == '1'}}
+        if: ${{ env.WRITE_TO_FILES == '1'}}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions"
