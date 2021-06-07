@@ -2,7 +2,7 @@
 // https://github.com/sendgrid/sendgrid-nodejs
 import sgMail from "@sendgrid/mail";
 import { strict as assert } from "assert";
-import { html } from "lit-html";
+import { promises as fs } from "fs";
 import { CombinedFeeds, CustomItem, ProcessedFeed } from "./getFeeds";
 
 export async function sendEmail(feeds: CombinedFeeds): Promise<void> {
@@ -11,12 +11,18 @@ export async function sendEmail(feeds: CombinedFeeds): Promise<void> {
     "SENDGRID_API_KEY is not a string"
   );
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+  const emailHTML = genereateEmailHTML(feeds);
+
+  fs.writeFile("./out/emailPreview.html", emailHTML);
+
   const msg = {
     to: "macolby14@gmail.com", // Change to your recipient
     from: "macolby14@gmail.com", // Change to your verified sender
     subject: "My RSS Feed",
-    html: genereateEmailHTML(feeds),
+    html: emailHTML,
   };
+
   if (process.env.SEND_EMAIL === "1") {
     await sgMail
       .send(msg)
@@ -32,7 +38,6 @@ export async function sendEmail(feeds: CombinedFeeds): Promise<void> {
         console.log(
           "Simulating sending email compelte. Change SEND_EMAIL env variable to actually send."
         );
-        console.log({ msg });
         resolve();
       }, 1000)
     );
