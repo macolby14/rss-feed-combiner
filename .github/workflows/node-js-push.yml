@@ -17,7 +17,7 @@ jobs:
     env:
       SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY}}
       SEND_EMAIL: ${{secrets.SEND_EMAIL}} # not actually a secret. A 0 or 1 flag
-      WRITE_TO_FILES: ${{ secrets.WRITE_TO_FILE }} # not acutally a secret. A 0 or 1 flag.
+      WRITE_TO_FILES: ${{ secrets.WRITE_TO_FILES }} # not acutally a secret. A 0 or 1 flag.
     strategy:
       matrix:
         node-version: [14.x]
@@ -37,4 +37,9 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions"
           git commit -am "github actions commit from node-js-push.yml"
-          git push
+          git
+        shell: bash
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
