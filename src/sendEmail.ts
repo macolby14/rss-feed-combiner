@@ -12,6 +12,9 @@ export async function sendEmail(feeds: CombinedFeeds): Promise<void> {
   );
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
+  console.log(`API Key is ${process.env.SENDGRID_API_KEY}`);
+  console.log(`SEND_EMAIL is ${process.env.SEND_EMAIL}`);
+
   const emailHTML = genereateEmailHTML(feeds);
 
   fs.writeFile("./out/emailPreview.html", emailHTML);
