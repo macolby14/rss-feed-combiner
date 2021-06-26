@@ -12,7 +12,7 @@ export function writeFile(fileName: string, data: unknown): Promise<void> {
     });
   }
   if (fileName.includes(".json")) {
-    fs.writeFile(fileName, JSON.stringify(data));
+    return fs.writeFile(fileName, JSON.stringify(data));
   }
 
   return fs.writeFile(fileName, data as string);

@@ -8,7 +8,7 @@ interface CustomFeed {
 export interface CustomItem {
   title: string;
   link: string;
-  pubDate: string;
+  pubDate: Date;
 }
 
 export interface ProcessedFeed {
@@ -55,15 +55,23 @@ export async function getFeeds(): Promise<CombinedFeeds> {
   };
 }
 
-function pickItemKeys({ title, link, pubDate }: CustomItem): CustomItem {
-  return { title, link, pubDate };
+function pickItemKeys({
+  title,
+  link,
+  pubDate,
+}: {
+  title: string;
+  link: string;
+  pubDate: string;
+}): CustomItem {
+  return { title, link, pubDate: new Date(pubDate) };
 }
 
 function getMostRecentPubDate(items: CustomItem[]): Date {
   let mostRecentPubDate = 0;
 
   items.forEach(({ pubDate }) => {
-    mostRecentPubDate = Math.max(Date.parse(pubDate), mostRecentPubDate);
+    mostRecentPubDate = Math.max(pubDate.getMilliseconds(), mostRecentPubDate);
   });
   return new Date(mostRecentPubDate);
 }
