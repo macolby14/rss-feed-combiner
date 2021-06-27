@@ -1,15 +1,17 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Node.js Actions on Push
+name: Node.js Actions on Cron
 
-# on:
-#   schedule:
-#     - cron: "0 0 * * *"
-
+# currently run daily at midnight Hawaii time (UTC - 10)
 on:
-  push:
-    branches: [main]
+  schedule:
+    - cron: "0 10 * * *"
+
+# For testing - enable on push
+# on:
+#   push:
+#     branches: [main]
 
 jobs:
   build:
