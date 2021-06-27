@@ -71,7 +71,7 @@ function getMostRecentPubDate(items: CustomItem[]): Date {
   let mostRecentPubDate = 0;
 
   items.forEach(({ pubDate }) => {
-    mostRecentPubDate = Math.max(pubDate.getMilliseconds(), mostRecentPubDate);
+    mostRecentPubDate = Math.max(pubDate.getTime(), mostRecentPubDate);
   });
   return new Date(mostRecentPubDate);
 }
