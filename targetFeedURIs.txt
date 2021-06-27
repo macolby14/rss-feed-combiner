@@ -1,2 +1,9 @@
 https://www.joshwcomeau.com/rss.xml
 https://netflixtechblog.com/feed
+https://engineering.fb.com/feed/
+https://engineering.linkedin.com/blog.rss.html
+https://redditblog.com/feed/
+https://blog.cloudflare.com/rss/
+https://github.blog/feed/
+https://developer.squareup.com/blog/rss.xml
+https://auth0.com/blog/rss.xml
