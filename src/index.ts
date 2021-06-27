@@ -10,8 +10,8 @@ import "source-map-support/register";
   const previousFeeds = await readPreviousFeedsFromFile();
   const combinedFeeds = await getFeeds();
   writeFile("./out/outputFeed.json", combinedFeeds);
-  // sendEmail(combinedFeeds);
   const uniqueNewFeeds = getNewFeedItemsOnly(previousFeeds, combinedFeeds);
+  sendEmail(uniqueNewFeeds);
 
   console.log(JSON.stringify(uniqueNewFeeds));
 })();

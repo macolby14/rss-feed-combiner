@@ -47,11 +47,14 @@ export async function sendEmail(feeds: CombinedFeeds): Promise<void> {
   }
 }
 
+const upToDateString = String.raw`<p>You're up to date! No new blog posts right now</p>>`;
+
 function genereateEmailHTML(feeds: CombinedFeeds): string {
   return String.raw`
     <h1>Your RSS Feed</h1>
     <p>Here is your RSS feed updated on ${feeds.timeUpdated}</p>
     ${feeds.feeds.map(singleFeedToHMTL)}
+    ${feeds.feeds.length === 0 ? upToDateString : ""}
   `;
 }
 
