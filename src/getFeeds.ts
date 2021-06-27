@@ -7,7 +7,7 @@ export async function getFeeds(): Promise<CombinedFeeds> {
     .readFile("./targetFeedURIs.txt", "utf8")
     .catch((err) => `An error occured reading rss feed urls: ${err}`);
 
-  const rssUrls = data.split("\n");
+  const rssUrls = data.split("\n").filter((line) => line !== "");
 
   const parser = new Parser<CustomFeed, CustomItem>();
 
