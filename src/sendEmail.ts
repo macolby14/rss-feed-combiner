@@ -2,7 +2,7 @@
 // https://github.com/sendgrid/sendgrid-nodejs
 import sgMail from "@sendgrid/mail";
 import { strict as assert } from "assert";
-import { CombinedFeeds, CustomItem, ProcessedFeed } from "./getFeeds";
+import { CombinedFeeds, CustomItem, ProcessedFeed } from "./types";
 import { writeFile } from "./utilities/writeFile";
 
 export async function sendEmail(feeds: CombinedFeeds): Promise<void> {
