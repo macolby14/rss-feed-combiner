@@ -6,7 +6,7 @@ name: Node.js Actions on Cron
 # currently run daily at midnight Hawaii time (UTC - 10)
 on:
   schedule:
-    - cron: "0 10 * * *"
+    - cron: "0 */4 * * *"
 
 # For testing - enable on push
 # on:
