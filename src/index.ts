@@ -61,9 +61,9 @@ function getNewFeedItemsOnly(
       }
 
       //get all new items from this feed
-      const mostRecentOldItem = singleOldFeed.mostRecentPubDate;
+      const mostRecentOldItem = new Date(singleOldFeed.mostRecentPubDate);
       const singleFeedResultItems = singleNewFeed.items.filter(
-        (item) => item.pubDate > mostRecentOldItem
+        (item) => new Date(item.pubDate) > mostRecentOldItem
       );
 
       if (singleFeedResultItems.length === 0) continue;
