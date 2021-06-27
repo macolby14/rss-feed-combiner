@@ -4,9 +4,7 @@
   "description": "Combine rss feeds for easy reading",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "dev": "tsc --watch & nodemon --watch dist/ dist/index.js",
     "start": "node dist/index.js"
   },
   "author": "",
@@ -14,21 +12,16 @@
   "dependencies": {
     "@sendgrid/mail": "^7.4.4",
     "@types/dotenv": "^8.2.0",
-    "@types/jsdom": "^16.2.10",
     "@types/node-fetch": "^2.5.10",
     "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "jsdom": "^16.6.0",
     "node-fetch": "^2.6.1",
     "rss-parser": "^3.12.0"
   },
   "devDependencies": {
-    "@tsconfig/node16": "^1.0.1",
-    "@types/express": "^4.17.12",
+    "@tsconfig/node14": "^1.0.1",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
     "eslint": "^7.27.0",
-    "nodemon": "^2.0.7",
     "prettier": "^2.3.0",
     "source-map-support": "^0.5.19",
     "typescript": "^4.3.2"
