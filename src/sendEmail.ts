@@ -21,7 +21,7 @@ export async function sendEmail(feeds: CombinedFeeds): Promise<void> {
 
   const msg = {
     to: "macolby14@gmail.com", // Change to your recipient
-    from: "macolby14@gmail.com", // Change to your verified sender
+    from: "mark@markcolby.dev", // Change to your verified sender
     subject: "My RSS Feed",
     html: emailHTML,
   };
