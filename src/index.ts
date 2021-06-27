@@ -4,11 +4,12 @@ import { sendEmail } from "./sendEmail";
 import { writeFile } from "./utilities/writeFile";
 import { promises as fs } from "fs";
 import { strict as assert } from "assert";
+import "source-map-support/register";
 
 (async function main() {
   const previousFeeds = await readPreviousFeedsFromFile();
   const combinedFeeds = await getFeeds();
-  // writeFile("./out/outputFeed.json", combinedFeeds);
+  writeFile("./out/outputFeed.json", combinedFeeds);
   // sendEmail(combinedFeeds);
   const uniqueNewFeeds = getNewFeedItemsOnly(previousFeeds, combinedFeeds);
 
