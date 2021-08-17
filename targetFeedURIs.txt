@@ -1,3 +1,4 @@
+https://blog.palantir.com/feed
 https://www.joshwcomeau.com/rss.xml
 https://netflixtechblog.com/feed
 https://engineering.fb.com/feed/
