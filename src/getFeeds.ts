@@ -16,19 +16,23 @@ export async function getFeeds(): Promise<CombinedFeeds> {
   const MAX_BLOG_POSTS_PER_FEED = 10;
 
   for (const url of rssUrls) {
-    const feed = await parser.parseURL(url);
-    const relevantItems = feed.items
-      .slice(0, MAX_BLOG_POSTS_PER_FEED)
-      .map((item) => pickItemKeys(item));
-    const feedMostRecentPubDate = getMostRecentPubDate(relevantItems);
+    try {
+      const feed = await parser.parseURL(url);
+      const relevantItems = feed.items
+        .slice(0, MAX_BLOG_POSTS_PER_FEED)
+        .map((item) => pickItemKeys(item));
+      const feedMostRecentPubDate = getMostRecentPubDate(relevantItems);
 
-    const relevantFeed = {
-      title: feed.title,
-      items: relevantItems,
-      mostRecentPubDate: feedMostRecentPubDate,
-    };
+      const relevantFeed = {
+        title: feed.title,
+        items: relevantItems,
+        mostRecentPubDate: feedMostRecentPubDate,
+      };
 
-    feeds.push(relevantFeed);
+      feeds.push(relevantFeed);
+    } catch (e) {
+      console.log(`Parser error at url: ${url}. ${e}`);
+    }
   }
 
   return {
