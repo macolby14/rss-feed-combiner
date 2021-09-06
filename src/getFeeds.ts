@@ -13,10 +13,12 @@ export async function getFeeds(): Promise<CombinedFeeds> {
 
   const feeds: ProcessedFeed[] = [];
 
+  const MAX_BLOG_POSTS_PER_FEED = 10;
+
   for (const url of rssUrls) {
     const feed = await parser.parseURL(url);
     const relevantItems = feed.items
-      .slice(0, 3)
+      .slice(0, MAX_BLOG_POSTS_PER_FEED)
       .map((item) => pickItemKeys(item));
     const feedMostRecentPubDate = getMostRecentPubDate(relevantItems);
 
