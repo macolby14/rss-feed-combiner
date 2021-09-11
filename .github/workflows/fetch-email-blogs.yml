@@ -3,10 +3,10 @@
 
 name: Node.js Actions on Cron
 
-# currently run on Saturday at midnight Hawaii time (UTC - 10)
+# currently run daily at midnight Hawaii time (UTC - 10)
 on:
   schedule:
-    - cron: "0 10 * * 6"
+    - cron: "0 10 * * *"
 
 # For testing - enable on push
 # on:
