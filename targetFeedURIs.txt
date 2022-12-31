@@ -1,20 +1,16 @@
-https://blog.palantir.com/feed
 https://www.joshwcomeau.com/rss.xml
 https://netflixtechblog.com/feed
 https://engineering.fb.com/feed/
 https://engineering.linkedin.com/blog.rss.html
 https://redditblog.com/feed/
-https://blog.cloudflare.com/rss/
 https://github.blog/feed/
 https://developer.squareup.com/blog/rss.xml
 https://auth0.com/blog/rss.xml
 https://medium.com/feed/discord-engineering/tagged/engineering
-https://blog.logrocket.com/feed/
 https://medium.com/feed/tinder-engineering
 https://tailscale.com/blog/index.xml
 https://stripe.com/blog/feed.rss
 https://eng.uber.com/feed/
 https://medium.com/feed/airbnb-engineering
-https://www.confluent.io/rss.xml
 https://engineering.grab.com/feed.xml
 
