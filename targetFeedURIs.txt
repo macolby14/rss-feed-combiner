@@ -12,4 +12,5 @@ https://stripe.com/blog/feed.rss
 https://medium.com/feed/airbnb-engineering
 https://engineering.grab.com/feed.xml
 http://feeds.feedburner.com/blogspot/RLXA
+https://www.andy-pearce.com/blog/feeds/all.atom.xml
 
