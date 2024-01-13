@@ -1,5 +1,9 @@
 # RSS Feed Updater
 
+## Summary
+- Daily (via Github actions) pull blog titles, links, and descriptions from a speciifed list of blogs with RSS feeds
+- Daily (via Github actions and Sendgrid) send an email with these blog links for easy reading 
+
 ## Motivation
 
 I enjoy reading engineerng tech blogs from companies like Netflix and Facebook and from individuals like Josh W Comeau. However, I usually only see the articles when they are linked on other sites like HackerNews. The goal of this project was to automatically monitor those site's blogs (via their RSS feeds) and then email myself periodically whenever there are new blogs to read.
