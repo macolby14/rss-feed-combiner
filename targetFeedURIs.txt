@@ -4,13 +4,11 @@ https://engineering.fb.com/feed/
 https://engineering.linkedin.com/blog.rss.html
 https://github.blog/feed/
 https://developer.squareup.com/blog/rss.xml
-https://auth0.com/blog/rss.xml
 https://medium.com/feed/discord-engineering/tagged/engineering
 https://medium.com/feed/tinder-engineering
-https://tailscale.com/blog/index.xml
-https://stripe.com/blog/feed.rss
 https://medium.com/feed/airbnb-engineering
 https://engineering.grab.com/feed.xml
 http://feeds.feedburner.com/blogspot/RLXA
 https://www.andy-pearce.com/blog/feeds/all.atom.xml
+https://overreacted.io/rss.xml
 
