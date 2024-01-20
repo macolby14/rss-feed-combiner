@@ -13,3 +13,4 @@ https://www.andy-pearce.com/blog/feeds/all.atom.xml
 https://overreacted.io/rss.xml
 https://daily.tinyprojects.dev/daily-blog.xml
 https://opensearch.org/feed.xml
+https://shopify.engineering/blog.atom
