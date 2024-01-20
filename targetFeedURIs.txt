@@ -3,7 +3,7 @@ https://netflixtechblog.com/feed
 https://engineering.fb.com/feed/
 https://engineering.linkedin.com/blog.rss.html
 https://github.blog/feed/
-https://developer.squareup.com/blog/rss.xml
+https://blog.cloudflare.com/rss
 https://medium.com/feed/discord-engineering/tagged/engineering
 https://medium.com/feed/tinder-engineering
 https://medium.com/feed/airbnb-engineering
